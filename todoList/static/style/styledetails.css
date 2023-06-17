@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap'); 
+*{
+    padding: 0px;
+    margin: 0px;
+}
+.container{
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(190,183,162,255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.box{
+    height: 90vh;
+    width: 80vw;
+    background-color: white;
+    border-radius: 20px;
+}
+
+.first{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 13.961605584642234vh;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+}
+.logo{
+    margin: 0px 0px 0px 10vw;
+    font-family: 'Lato', sans-serif;
+    font-size: 25px;
+    cursor: pointer;
+}
+#todohref{
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+.cancel{
+    margin: 0px 10vw 0px 0px;
+    cursor: pointer;
+}
+.second{
+    height: 77vh;
+    width: 100%;
+}
+.content{
+    height: 72vh;
+    background-color: rgb(255, 255, 255);
+    margin: 0px 10vh 0px 10vh;
+}
+p{
+    font-family: 'Lato', sans-serif;
+   
+}
+.title{
+    height: 10vh;
+    width: 100%;
+    background-color: rgb(254 250 230);
+    border-radius: 20px;
+    font-family: monospace;
+    padding: 10px;
+    font-weight: bold;
+}
+.description{
+    height: 45vh;
+    width: 100%;
+    background-color: rgb(254 250 230);
+    border-radius: 20px;
+    font-family: monospace;
+    padding: 10px;
+    font-weight: bold;
+}
+#titleText{
+    margin: 0vh 0px 2vh 0px;
+}
+#desTitle{
+    margin: 2vh 0px 2vh 0px;
+}

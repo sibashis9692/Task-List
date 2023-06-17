@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap'); 
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 15vh;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+}
+.logo{  
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0px 0px 0px 45px;
+    font-family: 'Lato', sans-serif;
+    cursor: pointer;
+}
+.add{
+    margin: 0px 45px 0px 0px;
+    cursor: pointer;
+}
+
+.item{
+    height: 100vh;
+    width: 100%;
+    background-color: beige;
+}
+
+.left{
+    float: left;
+    background-color: rgb(255, 255, 255);
+    height: 100vh;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.left1{
+    height: 100%;
+    width: 65%;
+}
+p{
+    font-family: monospace;
+}
+.work{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.study{
+    display: flex;
+    align-items: center;
+    margin: 20px 0px 0px 0px;
+    cursor: pointer;
+}
+.family{
+    display: flex;
+    align-items: center;
+    margin: 20px 0px 0px 0px;
+    cursor: pointer;
+}
+.other{
+    display: flex;
+    align-items: center;
+    margin: 20px 0px 0px 0px;
+    cursor: pointer;
+}
+.workcolor{
+    height: 15px;
+    width: 15px;
+    background-color: #a4ecd3;
+    border-radius: 50%;
+    margin: 5px;
+    padding: 10px;
+}
+.studeycolor{
+    height: 15px;
+    width: 15px;
+    background-color: #f9bddb;
+    border-radius: 50%;
+    margin: 5px;
+    padding: 10px;
+}
+.familycolor{
+    height: 15px;
+    width: 15px;
+    background-color: #c2b9ff;
+    border-radius: 50%;
+    margin: 5px;
+    padding: 10px;
+}
+.othercolor{
+    height: 15px;
+    width: 15px;
+    background-color: rgb(255 249 221);
+    border-radius: 50%;
+    margin: 5px;
+    padding: 10px;
+}
+.right{
+    float: right;
+    background-color: rgb(255, 255, 255);
+    height: 100vh;
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(2, 35vw);
+    grid-template-rows: repeat(1, 30vh);
+    row-gap: 15px;
+    column-gap: 15px;
+    justify-items:self-start;
+}
+
+.box{
+    height: 30vh;
+    width: 35vw;
+    border-radius: 5px;
+    padding: 10px;
+    
+}
+
+.one{
+    height: 6vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title{
+    font-family: 'Noto Sans', sans-serif;
+    cursor: pointer;
+}
+.content{
+    height: 62%;
+    width: 100%;
+    font-family: monospace;
+    overflow: hidden;
+    cursor: pointer;
+}
+.second{
+    height: 18%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.background{
+    display: flex;
+}
+.color1{
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: #a4ecd3;
+    margin: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.selectedColor{
+    color: black;
+    text-decoration: none;
+}
+.color2{
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    margin: 5px;
+    padding: 10px;
+    background-color: #f9bddb;
+    cursor: pointer;
+}
+
+.color3{
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    margin: 5px;
+    padding: 10px;
+    background-color: #c2b9ff;
+    cursor: pointer;
+}
+
+.color4{
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    margin: 5px;
+    padding: 10px;
+    background-color: rgb(255 249 221);
+    cursor: pointer;
+}
+
+.checkbox{
+    height: 15px;
+    width: 15px;
+    margin: 5px;
+}
+
+ul{
+    list-style: none;
+}
+
+li{
+    display: inline;
+    margin-right: 10px;
+}

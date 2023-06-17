@@ -1,0 +1,140 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'style/style.css'%}">
+</head>
+
+<body>
+    <div class="header">
+        <div class="logo" onclick="homepage()">
+            Todo
+        </div>
+        <div class="add">
+            <a href="/add/"><img src="{% static 'images/add.png' %}" alt=""></a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="left">
+            <div class="left1">
+                <div class="work">
+                    <div class="workcolor" onclick="selected(1)"></div>
+                    <a href="/selectedColor/1" class="selectedColor" ><p>work</p></a>
+                </div>
+                <div class="study">
+                    <div class="studeycolor" onclick="selected(2)"></div>
+                    <a href="/selectedColor/2" class="selectedColor" ><p>study</p></a>
+                </div>
+                <div class="family">
+                    <div class="familycolor" onclick="selected(3)"></div>
+                    <a href="/selectedColor/3" class="selectedColor" ><p>family</p></a>
+                </div>
+                <div class="other">
+                    <div class="othercolor" onclick="selected(4)"></div>
+                    <a href="/selectedColor/4" class="selectedColor" ><p>other</p></a>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            {% for item in items %}
+                <div class="box" style="background-color: {{ item.color }};">
+                    <div class="one" style="background-color: {{ item.color }};">
+                        <div class="title" onclick="clickbox({{item.sno}})">
+                            {% if item.complite == "True" %}
+                                <del>{{ item.title }}</del>
+                            {% else %}
+                                {{ item.title }}
+                            {% endif %}
+                        </div>
+                        <div class="threedot">
+                            <ul>
+                                <a href="/edit/{{ item.sno }}" class="selectedColor" style="font-family: 'Lato', sans-serif; font-size: 13px;"><li>Edit</li></a>
+                                <a href="/delete/{{ item.sno }}" class="selectedColor" style="font-family: 'Lato', sans-serif; font-size: 13px;"><li>Delete</li></a>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="content" onclick="clickbox({{item.sno}})" style="background-color: {{ item.color }};">
+                        {% if item.complite == "True" %}
+                            <del>{{ item.description }}</del>
+                        {% else %}
+                            {{ item.description }}
+                        {% endif %}
+                    </div>
+                    <div class="second">
+                        <div class="background">
+                            <div class="color1" onclick="color({{ item.sno }}, 1)"></div>
+                            <div class="color2" onclick="color({{ item.sno }}, 2)"></div>
+                            <div class="color3" onclick="color({{ item.sno }}, 3)"></div>
+                            <div class="color4" onclick="color({{ item.sno }}, 4)"></div>
+                        </div>
+                        <div class="check">
+                            {% if item.complite == "True" %}
+                                <input type="checkbox" class="checkbox" onclick="checkedbox({{ forloop.counter }}, {{ item.sno }})" checked>
+                            {% else %}
+                                <input type="checkbox" class="checkbox" onclick="checkedbox({{ forloop.counter }}, {{ item.sno }})">
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+<script>
+    clickbox=(number)=>{
+        window.location.href="details/"+number
+    }
+
+    color=(index, colornumber)=>{
+        let myDivObj=document.getElementsByClassName("color"+colornumber)[0]
+        if(colornumber == 1){
+            console.log(index)
+            console.log(colornumber)
+            console.log(window.getComputedStyle(myDivObj).backgroundColor)
+            window.location.href="/addcolor/"+index+"/"+colornumber
+        }
+        else if(colornumber == 2){
+            console.log(index)
+            console.log(colornumber)
+            console.log(window.getComputedStyle(myDivObj).backgroundColor)
+            window.location.href="/addcolor/"+index+"/"+colornumber
+        }
+        else if(colornumber == 3){
+            console.log(index)
+            console.log(colornumber)
+            console.log(window.getComputedStyle(myDivObj).backgroundColor)
+            window.location.href="/addcolor/"+index+"/"+colornumber
+        }
+        else{
+            console.log(index)
+            console.log(colornumber)
+            console.log(window.getComputedStyle(myDivObj).backgroundColor)
+            window.location.href="/addcolor/"+index+"/"+colornumber
+        }
+    }
+
+    selected=(number)=>{
+        window.location.href="/selectedColor/"+number
+    }
+
+    homepage=()=>{
+        window.location.href="/"
+
+    }
+
+    checkedbox=(number, datanumber)=>{
+        console.log("Clicked bapi")
+        let box=document.getElementsByClassName("checkbox")[number - 1]
+        if(box.checked){
+            window.location.href="checkbox/1/"+datanumber
+        }
+        else{
+            window.location.href="checkbox/0/"+datanumber
+        }
+    }
+</script>
+</html>

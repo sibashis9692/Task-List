@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'style/styledetails.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <div class="first">
+                <div class="logo">
+                    <a href="/" id="todohref">Todo</a>
+                </div>
+                <div class="cancel">
+                    <a href="/"><img src="{% static 'images/cancel.png' %}"></a>
+                </div>
+            </div>
+            <div class="second">
+                <div class="content">
+                    <p id="titleText">Title</p>
+                    <div class="title">
+                        {{ details.title }}
+                    </div>
+                    <p id="desTitle">Description</p>
+                    <div class="description">
+                        {{ details.description }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
