@@ -1,11 +1,17 @@
-from django.shortcuts import render, redirect
-from Home.models import Work
+from django.shortcuts import render, redirect, HttpResponse
+from Home.models import Work, Login
 
 # Create your views here.
 def home(request):
-    items=Work.objects.all()
+    if("logedin" not in request.session.keys()):
+        request.session["logedin"]=False
+        request.session["user"]=""
+    items=Work.objects.filter(email = request.session["user"]).all()
+    name=request.session["user"]
     context={
-        "items":items
+        "items":items,
+        "name":name.split("@")[0],
+        "number":""
     }
     return render(request,"index.html", context)
 
@@ -18,7 +24,7 @@ def stor(request):
         description=request.POST.get("description")
         color=request.POST.get("color")
         print("This is teh color "+color)
-        entery=Work(title=title, description=description, color=color, complite="False")
+        entery=Work(email = request.session["user"], title=title, description=description, color=color, complite="False")
         entery.save()
     return redirect("/")
 
@@ -69,9 +75,10 @@ def selectedColor(request, number):
         color="rgb(194, 185, 255)"
     else:
         color="rgb(255, 249, 221)"
-    items=Work.objects.filter(color=color)
+    items=Work.objects.filter(color=color, email=request.session["user"]).all()
     context={
-        "items":items
+        "items":items,
+        "number": number,
     }
     return render(request, "index.html", context)
 
@@ -80,7 +87,6 @@ def checkbox(request, number, datanumber):
     print(datanumber)
     entery=Work.objects.filter(sno = datanumber).first()
     if(number == 1):
-        print("Yes this is true")
         entery.complite = "True"
     else:
         entery.complite = "False"
@@ -90,4 +96,39 @@ def checkbox(request, number, datanumber):
 def delete(request, number):
     data=Work.objects.filter(sno = number).first()
     data.delete()
+    return redirect("/")
+
+def login(request):
+    if(request.method == "POST"):
+        email=request.POST.get("email")
+        password=request.POST.get("password")
+        data=Login.objects.filter(email = email).first()
+        if(data == None):
+            return HttpResponse("<p style='color:red; font-size:20px;' >User Not Found </p><a href=/login/>Try Again</a>")
+        elif(data != None and data.password != password):
+            return HttpResponse("<p>Password Not correct </p><br/><a href=/login/>Try Again</a>")
+        else:
+            request.session["logedin"]=True
+            request.session["user"]=email
+            return redirect("/")
+    return render(request, "login.html")
+
+def register(request):
+    if(request.method == "POST"):
+        email=request.POST.get("email")
+        password=request.POST.get("password")
+        repassword=request.POST.get("repassword")
+        data=Login.objects.filter(email = email).first()
+        if(data != None):
+            return HttpResponse("<p style=color:red; font-size:20px; >User alrady Exists </p><a href=/login/>Login</a>")
+        elif(password != repassword):
+            return HttpResponse("<p style=color:red; font-size:20px; >Password and Repassword is not same </p><a href=/register/>Enter again</a>")
+        else:
+            entery=Login(email = email, password = password)
+            entery.save()
+            return redirect("/login/")
+    return render(request, "register.html")
+
+def logout(request):
+    request.session.clear()
     return redirect("/")

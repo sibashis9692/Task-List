@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap'); 
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.contaienr{
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(190,183,162,255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.box{
+    height: 70vh;
+    width: 50vw;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.first{
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(255, 255, 255);
+    margin: 0px 0px 20px 0px;
+    border-radius: 20px;
+}
+.cancel{
+    margin: 0px 0px 0px 50px;
+}
+
+#canclehref{
+    color: black;
+    text-decoration: none;
+}
+.add{
+    margin: 0px 50px 0px 0px;
+    background-color: rgba(96,90,80,255);
+    height: 40px;
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+}
+
+.second{
+    margin: 0px 50px 50px 50px;
+}
+.tags{
+    margin: 0px 50px 0px 50px;
+}
+#inputtit{
+    height: 35px;
+    width: 100%;
+    margin: 10px 0px 20px 0px;
+    background-color: rgba(249,248,249,255);
+    border: 0px solid white;
+}
+
+#inputdes{
+    height: 35px;
+    width: 100%;
+    margin: 10px 0px 20px 0px;
+    background-color: rgba(249,248,249,255);
+    border: 0px solid white;
+}
+.color{
+    height: auto;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+}
+.colors{
+    display: flex;
+    align-items: center;
+    height: auto;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+}
+.color1{
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    background-color: #a4ecd3;
+    margin: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+.color2{
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    background-color: #f9bddb;
+    margin: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+.color3{
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    background-color: #c2b9ff;
+    margin: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+.color4{
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    background-color: rgb(255 249 221);
+    margin: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#family{
+    font-family: 'Noto Sans', sans-serif;
+    margin: 0px 0px 7px 0px;
+}
+
+p{
+    font-family: monospace;
+    margin: 0px 20px 0px 5px;
+}
+.cancel, .add{
+    font-family: monospace;
+}
+.register{
+    display: flex;
+    justify-content: space-between;
+    color: black;
+}
+
+#regi{
+    color: black;
+}

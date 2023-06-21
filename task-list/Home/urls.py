@@ -14,4 +14,7 @@ urlpatterns = [
     path('addcolor/<int:number>/<int:colornumber>', views.addcolor, name="addcolor"),
     path('selectedColor/<int:number>', views.selectedColor, name="selectedColor"),
     path('checkbox/<int:number>/<int:datanumber>', views.checkbox, name="chekbox"),
+    path("login/", views.login, name="login"),
+    path("register/", views.register, name="register"),
+    path("logout/", views.logout, name="logout")
 ]

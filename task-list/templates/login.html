@@ -1,0 +1,39 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'style/stylelogin.css' %}">
+</head>
+<body>
+    <div class="contaienr">
+        <div class="box">
+            <div class="first">
+                <a href="/" id="canclehref"><div class="cancel">Cancel</div></a>
+                <div class="add" onclick="submitForm()">Login</div>
+            </div>
+            <div class="second">
+                <form method="post" action="/login/">
+                    {% csrf_token %}
+                    <label for="title" id="family" >Email</label></br>
+                    <input type="text" id="inputtit" placeholder="Enter the email ..." name="email"></br>
+                    <label for="description" id="family" >Password</label></br>
+                    <input type="text" id="inputdes" placeholder="Enter the passwrd ..." name="password">
+                </form>
+                <div class="register">
+                    <p></p>
+                    <a id="regi" href="/register/">Do not have account </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function submitForm(){
+        const form = document.querySelector('form');
+        form.submit()
+    }
+</script>
+</html>

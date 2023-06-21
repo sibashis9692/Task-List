@@ -14,8 +14,19 @@
         <div class="logo" onclick="homepage()">
             Todo
         </div>
-        <div class="add">
-            <a href="/add/"><img src="{% static 'images/add.png' %}" alt=""></a>
+        <div class="last">
+            <div class="add">
+                {% if request.session.logedin %}
+                    <a href="/add/"><img src="{% static 'images/add.png' %}" alt=""></a>
+                {% else %}
+                    <a href="/login/"><img src="{% static 'images/add.png' %}" alt=""></a>
+                {% endif %}
+            </div>
+            <div class="logout">
+                {% if request.session.logedin %}
+                    <a href="/logout/"><img id="log" src="{% static 'images/logout.png' %}" alt=""></a>
+                {% endif %}
+            </div>
         </div>
     </div>
     <div class="item">
@@ -39,6 +50,21 @@
                 </div>
             </div>
         </div>
+        {% if number == 1 %}
+            <h2>Work</h2>
+        {% elif number == 2 %}
+            <h2>Study</h2>
+        {% elif number == 3 %}
+            <h2>Family</h2>
+        {% elif number == 4 %}
+            <h2>Other</h2>
+        {% else %}
+            {% if request.session.logedin %}
+                <h2>Good Evening {{name}}🙏</h2>
+            {% else %}
+                <h2>Please Login 🙏</h2>
+            {% endif %}
+        {% endif %}
         <div class="right">
             {% for item in items %}
                 <div class="box" style="background-color: {{ item.color }};">
@@ -72,10 +98,12 @@
                             <div class="color4" onclick="color({{ item.sno }}, 4)"></div>
                         </div>
                         <div class="check">
-                            {% if item.complite == "True" %}
-                                <input type="checkbox" class="checkbox" onclick="checkedbox({{ forloop.counter }}, {{ item.sno }})" checked>
-                            {% else %}
-                                <input type="checkbox" class="checkbox" onclick="checkedbox({{ forloop.counter }}, {{ item.sno }})">
+                            {% if number == "" %}
+                                {% if item.complite == "True" %}
+                                    <input type="checkbox" class="checkbox" onclick="checkedbox({{ forloop.counter }}, {{ item.sno }})" checked>
+                                {% else %}
+                                    <input type="checkbox" class="checkbox" onclick="checkedbox({{ forloop.counter }}, {{ item.sno }})">
+                                {% endif %}
                             {% endif %}
                         </div>
                     </div>
@@ -127,7 +155,6 @@
     }
 
     checkedbox=(number, datanumber)=>{
-        console.log("Clicked bapi")
         let box=document.getElementsByClassName("checkbox")[number - 1]
         if(box.checked){
             window.location.href="checkbox/1/"+datanumber
