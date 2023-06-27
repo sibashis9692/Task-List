@@ -60,9 +60,9 @@
             <h2>Other</h2>
         {% else %}
             {% if request.session.logedin %}
-                <h2>Good Evening {{name}}🙏</h2>
+                <h2>Good {{ gretting }} {{name}}🙏</h2>
             {% else %}
-                <h2>Please Login 🙏</h2>
+                <h2>Welcome 🙏</h2>
             {% endif %}
         {% endif %}
         <div class="right">

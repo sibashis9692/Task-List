@@ -32,7 +32,7 @@ h2{
     cursor: pointer;
 }
 .add{
-    margin: 0px 45px 0px 0px;
+    margin: 0px 45px 0px 0px;   
     cursor: pointer;
 }
 
@@ -231,4 +231,120 @@ ul{
 li{
     display: inline;
     margin-right: 10px;
+}
+
+
+@media screen and (max-width: 750px){
+    .header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 15vh;
+        width: 100%;
+        background-color: rgb(255, 255, 255);
+    }
+
+    .last{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .add{
+        margin: 0px 30px 0px 0px;   
+        cursor: pointer;
+    }
+    
+    .logout{
+        margin: 0px 15px 0px 0px;
+        cursor: pointer;
+    
+    }
+
+    .left{
+        float: none;
+        background-color: rgb(255, 255, 255);
+        height: 10%;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .left1{
+        height: 100%;
+        width: 100%;
+        background-color: rgb(255, 255, 255);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .study{
+        margin: 0px 0px 0px 0px;
+    }
+    .family{
+        margin: 0px 0px 0px 0px;
+    }
+    .other{
+        margin: 0px 0px 0px 0px;
+    }
+
+    .workcolor{
+        height: 30px;
+        width: 30px;
+    }
+    .studeycolor{
+        height: 30px;
+        width: 30px;
+    }
+    .familycolor{
+        height: 30px;
+        width: 30px;
+    }
+    .othercolor{
+        height: 30px;
+        width: 30px;
+    }
+
+    h2{
+        font-size: 6vw;
+        margin: 0px 0px 0px 5px;
+    }
+
+
+    .right{
+        background-color: rgb(255, 255, 255);
+        height: 100vh;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(1, 97%);
+        grid-template-rows: repeat(1, 30vh);
+        row-gap: 15px;
+        column-gap: 15px;
+        justify-items:self-start;
+    }
+
+    .box{
+        height: 30vh;
+        width: 100%;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 0px 0px 0px 5px;
+    }
+
+    .color1{
+        height: 30px;
+        width: 30px;
+    }
+    .color2{
+        height: 30px;
+        width: 30px;
+    }
+    .color3{
+        height: 30px;
+        width: 30px;
+    }
+    .color4{
+        height: 30px;
+        width: 30px;
+    }
 }

@@ -144,3 +144,64 @@ p{
 #regi{
     color: black;
 }
+
+
+@media screen and (max-width: 750px) {
+    .box {
+        height: 76vh;
+        width: 95vw;
+    }
+
+    p {
+        font-family: monospace;
+        margin: 0px 0px 0px 0px;
+    }
+
+    .second {
+        margin: 0px 10px 50px 10px;
+    }
+
+    .tags {
+        margin: 0px 10px 50px 10px;
+    }
+
+    .color1 {
+        height: 7px;
+        width: 10px;
+        border-radius: 50%;
+        background-color: #a4ecd3;
+        margin: 5px;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .color2 {
+        height: 7px;
+        width: 10px;
+        border-radius: 50%;
+        background-color: #f9bddb;
+        margin: 5px;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .color3 {
+        height: 7px;
+        width: 10px;
+        border-radius: 50%;
+        background-color: #c2b9ff;
+        margin: 5px;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .color4 {
+        height: 7px;
+        width: 10px;
+        border-radius: 50%;
+        background-color: rgb(255 249 221);
+        margin: 5px;
+        padding: 10px;
+        cursor: pointer;
+    }
+}

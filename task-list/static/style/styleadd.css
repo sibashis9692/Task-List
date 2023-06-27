@@ -1,25 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Geologica:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap'); 
-*{
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap');
+
+* {
     margin: 0px;
     padding: 0px;
 }
-.contaienr{
+
+.contaienr {
     height: 100vh;
     width: 100vw;
-    background-color: rgba(190,183,162,255);
+    background-color: rgba(190, 183, 162, 255);
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.box{
+
+.box {
     height: 70vh;
     width: 50vw;
     background-color: white;
     border-radius: 20px;
 }
-.first{
+
+.first {
     height: 10vh;
     width: 100%;
     display: flex;
@@ -29,17 +33,19 @@
     margin: 0px 0px 20px 0px;
     border-radius: 20px;
 }
-.cancel{
+
+.cancel {
     margin: 0px 0px 0px 50px;
 }
 
-#canclehref{
+#canclehref {
     color: black;
     text-decoration: none;
 }
-.add{
+
+.add {
     margin: 0px 50px 0px 0px;
-    background-color: rgba(96,90,80,255);
+    background-color: rgba(96, 90, 80, 255);
     height: 40px;
     width: 80px;
     display: flex;
@@ -50,40 +56,45 @@
     color: white;
 }
 
-.second{
+.second {
     margin: 0px 50px 50px 50px;
 }
-.tags{
+
+.tags {
     margin: 0px 50px 0px 50px;
 }
-#inputtit{
+
+#inputtit {
     height: 35px;
     width: 100%;
     margin: 10px 0px 20px 0px;
-    background-color: rgba(249,248,249,255);
+    background-color: rgba(249, 248, 249, 255);
     border: 0px solid white;
 }
 
-#inputdes{
+#inputdes {
     height: 70px;
     width: 100%;
     margin: 10px 0px 0px 0px;
-    background-color: rgba(249,248,249,255);
+    background-color: rgba(249, 248, 249, 255);
     border: 0px solid white;
 }
-.color{
+
+.color {
     height: auto;
     width: 100%;
     background-color: rgb(255, 255, 255);
 }
-.colors{
+
+.colors {
     display: flex;
     align-items: center;
     height: auto;
     width: 100%;
     background-color: rgb(255, 255, 255);
 }
-.color1{
+
+.color1 {
     height: 10px;
     width: 10px;
     border-radius: 50%;
@@ -92,7 +103,8 @@
     padding: 10px;
     cursor: pointer;
 }
-.color2{
+
+.color2 {
     height: 10px;
     width: 10px;
     border-radius: 50%;
@@ -101,7 +113,8 @@
     padding: 10px;
     cursor: pointer;
 }
-.color3{
+
+.color3 {
     height: 10px;
     width: 10px;
     border-radius: 50%;
@@ -110,7 +123,8 @@
     padding: 10px;
     cursor: pointer;
 }
-.color4{
+
+.color4 {
     height: 10px;
     width: 10px;
     border-radius: 50%;
@@ -120,20 +134,78 @@
     cursor: pointer;
 }
 
-#family{
+#family {
     font-family: 'Noto Sans', sans-serif;
     margin: 0px 0px 7px 0px;
 }
 
-p{
+p {
     font-family: monospace;
     margin: 0px 20px 0px 5px;
 }
-.cancel, .add{
+
+.cancel,
+.add {
     font-family: monospace;
 }
 
 
-@media screen and (max-width: 200px){
-    
+@media screen and (max-width: 750px) {
+    .box {
+        height: 76vh;
+        width: 95vw;
+    }
+
+    p {
+        font-family: monospace;
+        margin: 0px 0px 0px 0px;
+    }
+
+    .second {
+        margin: 0px 10px 50px 10px;
+    }
+
+    .tags {
+        margin: 0px 10px 50px 10px;
+    }
+
+    .color1 {
+        height: 7px;
+        width: 10px;
+        border-radius: 50%;
+        background-color: #a4ecd3;
+        margin: 5px;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .color2 {
+        height: 7px;
+        width: 10px;
+        border-radius: 50%;
+        background-color: #f9bddb;
+        margin: 5px;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .color3 {
+        height: 7px;
+        width: 10px;
+        border-radius: 50%;
+        background-color: #c2b9ff;
+        margin: 5px;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .color4 {
+        height: 7px;
+        width: 10px;
+        border-radius: 50%;
+        background-color: rgb(255 249 221);
+        margin: 5px;
+        padding: 10px;
+        cursor: pointer;
+    }
 }

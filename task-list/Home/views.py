@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, HttpResponse
 from Home.models import Work, Login
+import time
 
 # Create your views here.
 def home(request):
@@ -11,7 +12,8 @@ def home(request):
     context={
         "items":items,
         "name":name.split("@")[0],
-        "number":""
+        "number":"",
+        "gretting": gretting(),
     }
     return render(request,"index.html", context)
 
@@ -132,3 +134,16 @@ def register(request):
 def logout(request):
     request.session.clear()
     return redirect("/")
+
+
+def gretting():
+    hours=time.strftime("%I")  # This hours
+    fo=time.strftime("%p")   # This is PM, AM
+    if(5 <= int(hours) and int(hours) <= 11 and fo == "AM"):
+        return "Morning"
+    elif(12 == int(hours) or 1 <= int(hours) and int(hours) <= 5 and fo == "PM"):
+        return "Afternoon"
+    elif(6 <= int(hours) and int(hours) < 11 and fo == "PM"):
+        return "Evening"
+    else:
+        return "Night"
