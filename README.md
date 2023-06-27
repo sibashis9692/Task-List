@@ -1,5 +1,3 @@
 # Task-list
-This is the ToDo list with different types of functionality like:- ( Set work for different types of category , Color for different category, etc).
+This is the Task list with different types of functionality like:- ( Set work for different types of category , Color for different category).
 
-DataBase:-
-        Only you need to creat a database with name todolist
