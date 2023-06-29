@@ -4,7 +4,7 @@ User Management: Allows CRUD (Create, Read, Update, Delete) operations for users
 
 Installation:-
   * Clone the repository
-      * git clone  
+      * git clone < https://github.com/sibashis9692/Task-List.git >
   * Install the required dependencies using pip
       * pip install Django
       * pip install mysql-connector-python
