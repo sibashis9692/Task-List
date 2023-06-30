@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, HttpResponse
 from Home.models import Work, Login
-import time
-
+import datetime
+import pytz
 # Create your views here.
 def home(request):
     if("logedin" not in request.session.keys()):
@@ -35,12 +35,15 @@ def edit(request, number):
     context={
         "item": items
     }
+    print(context["item"].color)
+
     return render(request, "edit.html", context)
 def submitedit(request, number):
     if(request.method == 'POST'):
         entery=Work.objects.filter(sno = number).first()
         title=request.POST.get("title")
         color=request.POST.get("color")
+        print(color)
         description=request.POST.get("description")
         entery.title=title
         entery.description=description
@@ -137,13 +140,18 @@ def logout(request):
 
 
 def gretting():
+    time_utc = datetime.datetime.now(pytz.UTC)
+
+    # Convert the time to Indian Standard Time (IST)
+    indian_timezone = pytz.timezone('Asia/Kolkata')
+    time = time_utc.astimezone(indian_timezone)
     hours=time.strftime("%I")  # This hours
     fo=time.strftime("%p")   # This is PM, AM
     if(5 <= int(hours) and int(hours) <= 11 and fo == "AM"):
         return "Morning"
-    elif(12 == int(hours) or 1 <= int(hours) and int(hours) <= 5 and fo == "PM"):
+    elif(12 == int(hours) and fo == "PM" or 1 <= int(hours) and int(hours) <= 5 and fo == "PM"):
         return "Afternoon"
     elif(6 <= int(hours) and int(hours) < 11 and fo == "PM"):
         return "Evening"
-    else:
+    elif 11 <= int(hours) and int(hours) < 12 and fo == "PM" or int(hours) == 12 and fo == "AM" or 1 <= int(hours) and 4 >= int(hours) and fo == "AM":
         return "Night"

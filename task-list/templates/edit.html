@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'images/icon.jpg' %}">
     <link rel="stylesheet" href="{% static 'style/styleadd.css' %}">
 </head>
 <body>
@@ -21,7 +22,7 @@
                     <input type="text" id="inputtit" placeholder="add a title ..." name="title" value="{{ item.title }}"></br>
                     <label for="description" id="family" >Description</label></br>
                     <input type="text" id="inputdes" placeholder="add a description ..." name="description" value="{{ item.description }}">
-                    <input type="hidden" id="color" name="color" value={{ item.color }}>
+                    <input type="hidden" id="color" name="color" value="{{ item.color }}">
                 </form>
             </div>
             <div class="tags">
@@ -45,6 +46,7 @@
         selectcolor=(colornumber)=>{
             let myDivObj=document.getElementsByClassName("color"+colornumber)[0]
             document.getElementById("color").value=window.getComputedStyle(myDivObj).backgroundColor
+            console.log(window.getComputedStyle(myDivObj).backgroundColor)
         }
 
         const form = document.querySelector('form');
