@@ -6,7 +6,7 @@
     margin: 0px;
 }
 .container{
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
     background-color: rgba(190,183,162,255);
     display: flex;
@@ -14,7 +14,7 @@
     justify-content: center;
 }
 .box{
-    height: 90vh;
+    height: auto;
     width: 80vw;
     background-color: white;
     border-radius: 20px;
@@ -44,11 +44,11 @@
     cursor: pointer;
 }
 .second{
-    height: 77vh;
+    height: auto;
     width: 100%;
 }
 .content{
-    height: 72vh;
+    min-height: 72vh;
     background-color: rgb(255, 255, 255);
     margin: 0px 10vh 0px 10vh;
 }
@@ -57,7 +57,7 @@ p{
    
 }
 .title{
-    height: 10vh;
+    height: auto;
     width: 100%;
     background-color: rgb(254 250 230);
     border-radius: 20px;
@@ -66,7 +66,7 @@ p{
     font-weight: bold;
 }
 .description{
-    height: 45vh;
+    height: auto;
     width: 100%;
     background-color: rgb(254 250 230);
     border-radius: 20px;
@@ -83,7 +83,7 @@ p{
 
 @media screen and (max-width: 750px) {
     .box {
-        height: 76vh;
+        height: auto;
         width: 95vw;
     }
 
@@ -92,14 +92,13 @@ p{
         margin: 0px 0px 0px 0px;
     }
 
-    .second {
-        margin: 0px 10px 50px 10px;
-    }
 
     .tags {
         margin: 0px 10px 50px 10px;
     }
-
+    .content{
+        margin: 0px 4vh 0px 4vh;
+    }
     .color1 {
         height: 7px;
         width: 10px;

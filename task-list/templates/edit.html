@@ -21,7 +21,7 @@
                     <label for="title" id="family" >Title</label></br>
                     <input type="text" id="inputtit" placeholder="add a title ..." name="title" value="{{ item.title }}"></br>
                     <label for="description" id="family" >Description</label></br>
-                    <input type="text" id="inputdes" placeholder="add a description ..." name="description" value="{{ item.description }}">
+                    <textarea name="description" id="inputdes" cols="30" rows="10" >{{ item.description }}</textarea>
                     <input type="hidden" id="color" name="color" value="{{ item.color }}">
                 </form>
             </div>
