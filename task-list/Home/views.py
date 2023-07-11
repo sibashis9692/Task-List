@@ -1,35 +1,40 @@
 from django.shortcuts import render, redirect, HttpResponse
-from Home.models import Work, Login
+from django.contrib import messages
+from Home.models import Work
+from django.contrib.auth.models import User
 import datetime
 import pytz
+from django.contrib.auth.hashers import *
+from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 def home(request):
-    if("logedin" not in request.session.keys()):
-        request.session["logedin"]=False
-        request.session["user"]=""
-    items=Work.objects.filter(email = request.session["user"]).all()
-    name=request.session["user"]
-    context={
-        "items":items,
-        "name":name.split("@")[0],
-        "number":"",
-        "gretting": gretting(),
-    }
+    context={}
+    if(request.user.is_authenticated):
+        items=Work.objects.filter(email = request.user.email).all()
+        name=request.user.email
+        context={
+            "items":items,
+            "name":name.split("@")[0],
+            "number":"",
+            "gretting": gretting(),
+        }
     return render(request,"index.html", context)
-
+@login_required(login_url="/login/")
 def addwork(request):
     return render(request, "add.html")
-
+@login_required(login_url="/login/")
 def stor(request):
     if(request.method == "POST"):
         title=request.POST.get("title")
         description=request.POST.get("description")
         color=request.POST.get("color")
         print("This is teh color "+color)
-        entery=Work(email = request.session["user"], title=title, description=description, color=color, complite="False")
+        entery=Work(email = request.user.email, title=title, description=description, color=color, complite="False")
         entery.save()
     return redirect("/")
 
+@login_required(login_url="/login/")
 def edit(request, number):
     items=Work.objects.filter(sno = number).first()
     context={
@@ -38,6 +43,8 @@ def edit(request, number):
     print(context["item"].color)
 
     return render(request, "edit.html", context)
+
+@login_required(login_url="/login/")
 def submitedit(request, number):
     if(request.method == 'POST'):
         entery=Work.objects.filter(sno = number).first()
@@ -50,6 +57,8 @@ def submitedit(request, number):
         entery.color=color
         entery.save()
     return redirect("/")
+
+@login_required(login_url="/login/")
 def details(request, number):
     details=Work.objects.filter(sno = number).first()
     context={
@@ -57,6 +66,7 @@ def details(request, number):
     }
     return render(request, "details.html", context)
 
+@login_required(login_url="/login/")
 def addcolor(request, number, colornumber):
     entery=Work.objects.filter(sno=number).first()
     if(colornumber == 1):
@@ -70,6 +80,7 @@ def addcolor(request, number, colornumber):
     entery.save()
     return redirect("/")
 
+@login_required(login_url="/login/")
 def selectedColor(request, number):
     color=""
     if(number == 1):
@@ -80,13 +91,14 @@ def selectedColor(request, number):
         color="rgb(194, 185, 255)"
     else:
         color="rgb(255, 249, 221)"
-    items=Work.objects.filter(color=color, email=request.session["user"]).all()
+    items=Work.objects.filter(color=color, email=request.user.email).all()
     context={
         "items":items,
         "number": number,
     }
     return render(request, "index.html", context)
 
+@login_required(login_url="/login/")
 def checkbox(request, number, datanumber):
     print(number)
     print(datanumber)
@@ -98,23 +110,26 @@ def checkbox(request, number, datanumber):
     entery.save()
     return redirect("/")
 
+@login_required(login_url="/login/")
 def delete(request, number):
     data=Work.objects.filter(sno = number).first()
     data.delete()
     return redirect("/")
 
-def login(request):
+
+def login_page(request):
     if(request.method == "POST"):
         email=request.POST.get("email")
         password=request.POST.get("password")
-        data=Login.objects.filter(email = email).first()
-        if(data == None):
-            return HttpResponse("<p style='color:red; font-size:20px;' >User Not Found </p><a href=/login/>Try Again</a>")
-        elif(data != None and data.password != password):
-            return HttpResponse("<p>Password Not correct </p><br/><a href=/login/>Try Again</a>")
+        user=User.objects.filter(email = email).first()
+        if(user == None):
+            messages.warning(request, "User Not Found")
+            return redirect("/login/")
+        if(not check_password(password, user.password)):
+            messages.warning(request, "Password Incorect")
+            return redirect("/login/")
         else:
-            request.session["logedin"]=True
-            request.session["user"]=email
+            login(request, user)
             return redirect("/")
     return render(request, "login.html")
 
@@ -123,21 +138,25 @@ def register(request):
         email=request.POST.get("email")
         password=request.POST.get("password")
         repassword=request.POST.get("repassword")
-        data=Login.objects.filter(email = email).first()
+        data=User.objects.filter(email = email).first()
         if(data != None):
-            return HttpResponse("<p style=color:red; font-size:20px; >User alrady Exists </p><a href=/login/>Login</a>")
+            messages.warning(request, "User alrady Exists ")
+            return redirect("/register/")
         elif(password != repassword):
-            return HttpResponse("<p style=color:red; font-size:20px; >Password and Repassword is not same </p><a href=/register/>Enter again</a>")
+            messages.warning(request, "Password and Repassword is not same ")
+            return redirect("/register/")
         else:
-            entery=Login(email = email, password = password)
+            print(make_password(password))
+            entery=User(email = email)
+            entery.set_password(password)
             entery.save()
             return redirect("/login/")
     return render(request, "register.html")
 
-def logout(request):
-    request.session.clear()
+@login_required(login_url="/login/")
+def logout_user(request):
+    logout(request)
     return redirect("/")
-
 
 def gretting():
     time_utc = datetime.datetime.now(pytz.UTC)

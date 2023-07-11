@@ -16,6 +16,14 @@
                 <div class="add" onclick="submitForm()">Login</div>
             </div>
             <div class="second">
+                {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                        <p>{{message}}</p>
+                    </div>
+                    {% endfor %}
+                {% endif %}
                 <form method="post" action="/login/">
                     {% csrf_token %}
                     <label for="title" id="family" >Email</label></br>
