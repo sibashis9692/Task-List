@@ -1,4 +1,16 @@
 # Task-List
-Here is the Task List with different types of functionality:
-         * Set tasks for different categories
-         * Assign colors to different categories
+Features:-
+Event Management: Allows CRUD (Create, Read, Update, Delete) operations for users. Users can register, login, and manage their events.
+
+Installation:-
+  * Clone the repository
+      * git clone < https://github.com/sibashis9692/Event-Management-System.git >
+  * Install the required dependencies using pip
+      * pip install Django
+      * pip install mysql-connector-python
+  * Set up the MySQL databse. Make sure to update the database setting in the setting.py file with your MySQL credentials.
+  * Apply database migrations
+      * python manage.py migrate
+  * Start the development server
+      * python manage.py runserver
+  * Acess the application by visiting http://localhost:8000 in your web browser.
