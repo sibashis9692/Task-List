@@ -1,11 +1,11 @@
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect
 from django.contrib import messages
 from Home.models import Work
 from django.contrib.auth.models import User
 import datetime
 import pytz
 from django.contrib.auth.hashers import *
-from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 def home(request):
@@ -15,7 +15,7 @@ def home(request):
         name=request.user.email
         context={
             "items":items,
-            "name":name.split("@")[0],
+            "name": request.user.username,
             "number":"",
             "gretting": gretting(),
         }
@@ -29,7 +29,6 @@ def stor(request):
         title=request.POST.get("title")
         description=request.POST.get("description")
         color=request.POST.get("color")
-        print("This is teh color "+color)
         entery=Work(email = request.user.email, title=title, description=description, color=color, complite="False")
         entery.save()
     return redirect("/")
@@ -40,7 +39,6 @@ def edit(request, number):
     context={
         "item": items
     }
-    print(context["item"].color)
 
     return render(request, "edit.html", context)
 
@@ -50,7 +48,6 @@ def submitedit(request, number):
         entery=Work.objects.filter(sno = number).first()
         title=request.POST.get("title")
         color=request.POST.get("color")
-        print(color)
         description=request.POST.get("description")
         entery.title=title
         entery.description=description
@@ -100,8 +97,6 @@ def selectedColor(request, number):
 
 @login_required(login_url="/login/")
 def checkbox(request, number, datanumber):
-    print(number)
-    print(datanumber)
     entery=Work.objects.filter(sno = datanumber).first()
     if(number == 1):
         entery.complite = "True"
@@ -146,8 +141,7 @@ def register(request):
             messages.warning(request, "Password and Repassword is not same ")
             return redirect("/register/")
         else:
-            print(make_password(password))
-            entery=User(email = email)
+            entery=User(username = email.split("@")[0], email = email)
             entery.set_password(password)
             entery.save()
             return redirect("/login/")
